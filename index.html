@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="#f8f7f2" name="theme-color"/>
+<meta content="Dharvi Prajapati — designer exploring people, spaces and systems through research-led design." name="description"/>
+<title>Dharvi Prajapati — Design &amp; Research</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@1&family=Lato:wght@300;400;700;900&display=swap');
+
+:root {
+  --paper: #faf9f6;
+  --ink: #11110f;
+  --muted: #696861;
+  --ochre: #e8d18e;
+  --line: #d7d5cf;
+  --mono: 'DM Mono', monospace;
+  --body: 'Lato', sans-serif;
+}
+
+* { box-sizing: border-box; }
+/* Original browser scale; responsive containers remain centred. */
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background-color: var(--paper);
+  background-image: radial-gradient(#222 0.65px, transparent 0.65px);
+  background-size: 32px 32px;
+  color: var(--ink);
+  font-family: var(--body);
+}
+
+a { color: inherit; text-decoration: none; }
+button { font: inherit; }
+.wrap { width: min(1320px, calc(100% - 9vw)); margin: auto; }
+
+/* Navigation */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 26px 0;
+  font-family: var(--mono);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  position: relative;
+}
+.nav:after {
+  content: "";
+  height: 2px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: var(--read-progress, 0%);
+  background: var(--ochre);
+  transition: width 0.12s linear;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 94px;
+  height: 62px;
+  padding: 0;
+  line-height: 0;
+}
+.logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+.navlinks { display: flex; gap: 28px; }
+.nav a:hover { color: #b7831b; }
+
+/* Hero Section */
+.hero {
+  min-height: 560px;
+  display: grid;
+  grid-template-columns: 46% 54%;
+  align-items: center;
+  position: relative;
+  padding: 35px 0 8px;
+}
+.hero .composition-stage {
+  position: relative !important;
+  align-self: center;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow: visible;
+}
+.hero .hero-composition {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 760px;
+  object-fit: contain;
+  object-position: top center;
+  mix-blend-mode: normal;
+}
+.years-editable {
+  position: absolute;
+  z-index: 5;
+  left: 50.8%;
+  top: 68.1%;
+  transform: translate(-50%, -50%);
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-weight: 400;
+  width: 66%;
+  max-width: 300px;
+  text-align: center;
+  font-size: clamp(14px, 1.9vw, 20px);
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  color: #11110f;
+  white-space: normal;
+  overflow-wrap: break-word;
+  pointer-events: auto;
+}
+.hero .composition-hi {
+  position: absolute;
+  z-index: 4;
+  left: 10.2%;
+  top: 12.2%;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: calc(clamp(48px, 7.2vw, 105px) - 1pt);
+  font-weight: 500 !important;
+  letter-spacing: -0.09em !important;
+  line-height: 0.88 !important;
+  color: #11110f;
+  pointer-events: none;
+}
+.hanging-thread-reference {
+  position: absolute;
+  z-index: 9;
+  left: 19%;
+  top: 22.5%;
+  width: 5%;
+  height: 19.4%;
+  object-fit: fill;
+  object-position: bottom center;
+  pointer-events: none;
+  user-select: none;
+}
+.hanging-tag-flip {
+  position: absolute;
+  z-index: 8 !important;
+  left: 6.4% !important;
+  top: 41.8% !important;
+  width: 30.2% !important;
+  height: 43.2% !important;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  perspective: 1000px;
+  cursor: pointer;
+  border-radius: 2px;
+  overflow: hidden !important;
+}
+.hanging-tag-inner {
+  position: absolute;
+  inset: 0;
+  display: block;
+  transform-style: preserve-3d;
+  transition: transform 0.72s cubic-bezier(0.2, 0.72, 0.25, 1);
+}
+.hanging-tag-flip:hover .hanging-tag-inner,
+.hanging-tag-flip:focus-visible .hanging-tag-inner,
+.hanging-tag-flip.is-flipped .hanging-tag-inner {
+  transform: rotateY(180deg);
+}
+.hanging-tag-face {
+  position: absolute;
+  inset: 0;
+  display: block;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.hanging-tag-front {
+  background-image: url("assets/hanging-tag-front.webp") !important;
+  transform: rotateY(0deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.education-tag-icon {
+  display: block;
+  width: 66%;
+  height: 58%;
+  object-fit: contain;
+  filter: none;
+}
+.hanging-tag-back {
+  background-image: url("assets/hanging-tag-back.webp") !important;
+  transform: rotateY(180deg);
+}
+
+.hero-copy {
+  padding-left: 3%;
+  position: relative;
+  top: 18px;
+  z-index: 2;
+}
+.eyebrow {
+  font: 11px var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  color: var(--muted);
+}
+.hero-copy h1 {
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: calc(clamp(44px, 6.7vw, 98px) - 1pt);
+  line-height: 0.9 !important;
+  letter-spacing: -0.025em !important;
+  font-weight: 500 !important;
+  margin: 25px 0 24px;
+  max-width: 740px;
+}
+.hero-copy h1 .underline {
+  position: relative;
+  white-space: nowrap;
+}
+.intro {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: clamp(20px, 1.7vw, 23px);
+  line-height: 1.65;
+  letter-spacing: 0.025em;
+  max-width: 590px;
+  color: #6B6A66;
+}
+ .intro-marquee { font-family: 'Instrument Serif', serif; font-style: italic;
+  display: inline-flex;
+  vertical-align: baseline;
+  overflow: hidden;
+  width: min(100%, 270px);
+  white-space: nowrap;
+  position: relative;
+  margin: 0 0.08em;
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 1.28em;
+  line-height: 1.25;
+}
+.intro-marquee-track {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  width: max-content;
+  animation: clientLogosLeftToRight 22s linear infinite;
+  will-change: transform;
+}
+.intro-marquee-set {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  gap: 0.65em;
+  padding-right: 0.65em;
+}
+.intro-marquee-set span {
+  position: relative;
+  display: inline-block;
+  z-index: 0;
+}
+.intro-marquee-set span::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -0.1em;
+  right: -0.1em;
+  top: 14%;
+  height: 1.05em;
+  opacity: 0.74;
+  background-color: var(--ochre);
+  background-image: url("assets/intro-marquee-set.svg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  transform: rotate(-1deg);
+  pointer-events: none;
+}
+.cta-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 30px;
+  align-items: center;
+}
+.pill {
+  border: 1px solid rgba(17,17,15,0.10);
+  border-radius: 99px;
+  padding: 13px 19px;
+  font-size: 12px;
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 6px 6px 14px rgba(35, 32, 25, 0.12), -6px -6px 14px rgba(255,255,255,0.92);
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s, color 0.2s;
+}
+.pill.dark { background: var(--paper); color: var(--ink); font-weight: 600; }
+.pill:hover { transform: translateY(-2px); box-shadow: 8px 8px 17px rgba(35, 32, 25, 0.15), -6px -6px 14px rgba(255,255,255,0.96); }
+.pill:active { transform: translateY(0); box-shadow: inset 4px 4px 8px rgba(35,32,25,0.12), inset -4px -4px 8px rgba(255,255,255,0.85); }
+.tag-row { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 18px; }
+.about-lenses {
+  max-width: 500px;
+  margin: 26px 0 0;
+  font: 10px var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  line-height: 1.9;
+  color: var(--muted);
+}
+.tag {
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  padding: 7px 11px;
+  font: 10px var(--mono);
+  text-transform: uppercase;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+.tag:hover {
+  background: var(--ochre);
+  border-color: var(--ink);
+  transform: translateY(-2px);
+}
+
+
+.logo-marquee-before-projects { margin: 0 0 18px; }
+.logo-marquee-before-projects .client-logos { max-width: 100%; margin-bottom: 0; }
+
+/* Client Logo Marquee */
+.client-logos {
+  width: 100%;
+  max-width: 470px;
+  height: 84px;
+  margin: 0 0 8px;
+  flex: 0 1 470px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: transparent;
+  isolation: isolate;
+}
+.client-logo-marquee {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.client-logo-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  flex-wrap: nowrap;
+  gap: 0;
+  animation: clientLogosLeftToRight 22s linear infinite;
+  will-change: transform;
+}
+.client-logo-set {
+  display: flex !important;
+  flex: 0 0 auto !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  gap: 20px !important;
+  padding: 0 10px !important;
+}
+.client-logo-set img {
+  display: block;
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  max-width: 95px;
+  max-height: 34px;
+  object-fit: contain;
+}
+.client-logo-set img.shades-logo {
+  max-width: 165px !important;
+  max-height: 58px !important;
+  transform: translateY(5px) !important;
+}
+.client-logo-set img.grasim-logo { max-width: 112px !important; max-height: 52px !important; }
+.client-logo-set img:nth-child(4) { max-width: 144px !important; max-height: 43px !important; }
+.client-logo-set img.ff-logo { max-width: 64px !important; max-height: 36px !important; }
+.client-logo-set img.ecotasar-logo { max-width: 90px !important; max-height: 28px !important; }
+.client-logo-set img.pala-logo { max-width: 78px !important; max-height: 60px !important; }
+
+@keyframes clientLogosLeftToRight {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+/* =========================================================
+   SCROLL FLIGHT STAGE (Enters Smoothly From Off-Screen Right)
+   ========================================================= */
+.flight-section {
+  position: relative !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  padding: 0 0 12px !important;
+  overflow: visible !important;
+  isolation: isolate;
+}
+.flight-scroll-stage {
+  position: absolute;
+  inset: -90px 0 0 0;
+  height: 460px;
+  width: 100%;
+  pointer-events: none;
+  z-index: 10;
+  overflow: visible;
+}
+.flight-scroll-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.scroll-plane-anchor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: clamp(115px, 13vw, 165px);
+  height: auto;
+  pointer-events: none;
+  transform-origin: 20% 35%; /* Pivot aligned with physical center-of-lift */
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+  opacity: 0; /* Fully hidden off-canvas until flight begins */
+  transition: opacity 0.3s ease;
+}
+.scroll-plane-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 14px 24px rgba(20, 18, 14, 0.08));
+}
+
+.flight-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 30px;
+  margin-bottom: 0;
+  position: relative;
+  padding-top: 0 !important;
+  z-index: 1;
+}
+.flight-heading h2 {
+  font-size: clamp(42px, 6vw, 78px);
+  line-height: 0.96;
+  letter-spacing: -0.085em;
+  font-weight: 500;
+  margin: 16px 0 0;
+}
+.flight-heading .section-intro { max-width: 370px; font-size: 13px; line-height: 1.7; color: var(--muted); }
+.flight-controls { display: flex; justify-content: flex-end; flex-shrink: 0; }
+.launch-button {
+  appearance: none;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid rgba(17,17,15,0.10);
+  border-radius: 999px;
+  padding: 12px 16px;
+  font: 10px var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  cursor: pointer;
+  box-shadow: 6px 6px 14px rgba(35, 32, 25, 0.12), -6px -6px 14px rgba(255,255,255,0.92);
+  transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.launch-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 8px 8px 17px rgba(35, 32, 25, 0.15), -6px -6px 14px rgba(255,255,255,0.96);
+}
+.launch-button:active { transform: translateY(0); box-shadow: inset 4px 4px 8px rgba(35,32,25,0.12), inset -4px -4px 8px rgba(255,255,255,0.85); }
+
+.flight-map {
+  min-height: 0;
+  height: auto;
+  position: relative;
+  margin: 8px 0 0;
+  isolation: isolate;
+  cursor: default;
+}
+.observe-process-diagram {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+  object-fit: contain;
+}
+.diagram-image-wrap { margin-top: 0; }
+@media (max-width: 700px) {
+  .diagram-image-wrap { margin-top: 0; }
+  .observe-process-diagram { width: 100%; margin-left: 0; margin-right: 0; }
+}
+.flight-path { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.flight-node {
+  position: absolute;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 18px 20px;
+  min-width: 175px;
+  cursor: pointer;
+  transition: transform 0.25s, border-color 0.25s, background 0.25s;
+}
+.flight-node:hover, .flight-node:focus-visible { transform: translateY(-5px); outline: none; border-color: var(--ink); }
+.flight-node.is-active { border-color: var(--ink); box-shadow: 5px 5px 0 var(--ochre); background: #fff; }
+.node-observe { left: 5%; top: 36%; }
+.node-synthesise { left: 43%; top: 7%; }
+.node-strategise { right: 4%; top: 44%; }
+.node-number { font: 10px var(--mono); color: var(--muted); margin-bottom: 17px; }
+.node-name { font-size: 24px; letter-spacing: -0.06em; }
+.node-note { font: 10px var(--mono); color: var(--muted); margin-top: 6px; }
+
+/* Work Section */
+.section { padding: 95px 0; }
+#work.section { padding-top: 0 !important; }
+#work .section-head { margin-top: 0 !important; margin-bottom: 28px !important; }
+#work h2 { font-size: clamp(38px, 5.6vw, 72px); font-weight: 500; letter-spacing: -0.08em; line-height: 1; margin: 0; }
+
+.visual-project-grid {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  justify-items: center !important;
+  gap: 18px !important;
+  align-items: start !important;
+  width: 100% !important;
+}
+.visual-project {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1905 / 555;
+  width: 100%;
+  max-width: 1250px;
+  margin: -10px auto 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transition: none;
+}
+.visual-project img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.65s cubic-bezier(0.2, 0.7, 0.2, 1), filter 0.35s ease;
+}
+.visual-project.parali-project { background: transparent !important; border: 0 !important; box-shadow: none !important; }
+.visual-project.parali-project img { object-fit: contain; background: transparent; transform: none !important; filter: none !important; }
+.visual-project.parali-project:after { display: none; }
+.visual-project:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(15, 15, 13, 0.06), transparent 45%, rgba(15, 15, 13, 0.12));
+  opacity: 0.35;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.visual-project:hover, .visual-project:focus-visible {
+  transform: none;
+  box-shadow: none;
+}
+.visual-project:hover img, .visual-project:focus-visible img {
+  transform: none;
+  filter: none;
+}
+.visual-project:hover:after { opacity: 0; }
+.visual-project-arrow {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 50%;
+  background: rgba(25, 25, 22, 0.42);
+  color: #fff;
+  font-size: 21px;
+  opacity: 0;
+  transform: translateY(5px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  backdrop-filter: blur(4px);
+}
+.visual-project:hover .visual-project-arrow,
+.visual-project:focus-visible .visual-project-arrow {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* About Section */
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9vw;
+  align-items: start;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+}
+.about h2 { font-size: clamp(38px, 5.6vw, 72px); font-weight: 500; letter-spacing: -0.08em; line-height: 1; margin: 14px 0 0; }
+.about-copy { font-size: clamp(21px, 2.6vw, 34px); line-height: 1.4; letter-spacing: -0.04em; }
+.about-copy em { font-style: normal; background: var(--ochre); padding: 0 4px; }
+.about-details { font-family: var(--body); font-size: 14px; line-height: 1.9; color: #4f4e48; max-width: 500px; }
+
+/* Footer */
+.footer { padding: 80px 0 30px; }
+#about.about-contact { padding-bottom: 0; }
+.footer h2 {
+  font-size: clamp(38px, 5.6vw, 72px);
+  line-height: 1;
+  letter-spacing: -0.08em;
+  font-weight: 500;
+  margin: 22px 0 30px;
+}
+.footer-hl { background: var(--ochre); padding: 0 5px; }
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 34px;
+}
+.contact-links .pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 22px 12px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+.contact-icon { width: 24px; height: 24px; flex: 0 0 24px; }
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  justify-content: space-between;
+  padding-top: 18px;
+  font: 10px var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  border-top: 0 !important;
+}
+
+@media (max-width: 640px) {
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
+}
+
+/* Modal and Cursor */
+.project-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  background: #f8f7f2f5;
+  backdrop-filter: blur(8px);
+  display: none;
+  overflow: auto;
+  padding: 5vh 5vw;
+}
+.project-modal.is-open { display: block; }
+.modal-panel {
+  max-width: 1100px;
+  margin: auto;
+  background: #fff;
+  border: 1px solid var(--line);
+  padding: clamp(22px, 5vw, 64px);
+  position: relative;
+  min-height: 70vh;
+}
+.modal-close {
+  position: sticky;
+  top: 0;
+  float: right;
+  border: 1px solid rgba(17,17,15,0.10);
+  background: #f8f7f2;
+  color: var(--ink);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 5px 5px 12px rgba(35,32,25,0.13), -5px -5px 12px rgba(255,255,255,0.95);
+  transition: box-shadow 0.2s, transform 0.2s;
+  z-index: 2;
+}
+.modal-close:hover { transform: translateY(-1px); box-shadow: 7px 7px 14px rgba(35,32,25,0.15), -5px -5px 12px rgba(255,255,255,0.95); }
+.modal-close:active { box-shadow: inset 3px 3px 7px rgba(35,32,25,0.13), inset -3px -3px 7px rgba(255,255,255,0.9); }
+.modal-title { font-size: clamp(38px, 7vw, 84px); line-height: 0.95; letter-spacing: -0.08em; font-weight: 500; margin: 20px 0; }
+.modal-body { font-size: 16px; line-height: 1.75; max-width: 760px; }
+.modal-board { width: 100%; max-height: 70vh; object-fit: contain; background: #fff; display: block; margin: 28px 0; border: 0; }
+.modal-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+
+@media(pointer:fine) {
+  /* Hide the system pointer everywhere; the custom dot replaces it. */
+  *, *::before, *::after { cursor: none !important; }
+  .cursor-dot {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 12px;
+    height: 12px;
+    display: grid;
+    place-items: center;
+    pointer-events: none;
+    z-index: 9999;
+    color: var(--dot-tone, #e8b900);
+    opacity: 0;
+    transform: translate3d(-100px, -100px, 0);
+    transition: opacity 0.2s, color 0.12s;
+    /* Light halo so the dot stays readable on dark areas. */
+    filter: drop-shadow(0 0 1.5px rgba(250, 249, 246, 0.9));
+    will-change: transform;
+  }
+  .cursor-dot.is-visible { opacity: 1; }
+  /* Scale the glyph itself, not the positioned dot, so hover/press never shifts the hotspot. */
+  .cursor-dot svg { display: block; width: 11px; height: 11px; overflow: visible; transition: scale 0.12s; }
+  .cursor-dot.is-hover { color: #222; }
+  .cursor-dot.is-hover svg { scale: 1.3; }
+  .cursor-dot.is-click { color: #e8b900; }
+  .cursor-dot.is-click svg { scale: 0.82; }
+}
+
+@media(max-width: 800px) {
+  .wrap { width: calc(100% - 36px); }
+  .nav { font-size: 12px; }
+  .navlinks { gap: 18px; }
+  .hero { grid-template-columns: 1fr; padding-top: 0; min-height: unset; }
+  .hero .composition-stage { width: min(100%, 560px); margin: 0 auto; }
+  .hero .composition-hi { left: 9.5%; top: 12.5%; }
+  .hero-copy { padding: 35px 0 0; }
+  .hero-copy .client-logos { margin: 80px 0 50px; }
+  .flight-scroll-stage { height: 380px; inset: -60px 0 0 0; }
+  .scroll-plane-anchor { width: clamp(95px, 18vw, 130px); }
+  .flight-heading { align-items: start; flex-direction: column; padding-top: 30px !important; }
+  .flight-heading .client-logos { width: 100%; max-width: 100%; height: 72px; margin: 14px 0 0; flex: 0 0 auto; }
+  .visual-project-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 14px !important; }
+  .visual-project.parali-project { width: 100%; margin-top: -6px; }
+  .about { grid-template-columns: 1fr; }
+  .cursor-dot { display: none; }
+}
+@media(max-width: 430px) {
+  .hanging-thread-reference { left: 39.5%; top: 14%; width: 5.8%; height: 12.8%; }
+  .hanging-tag-flip { left: 5.4% !important; top: 26.8% !important; width: 74% !important; height: 67% !important; }
+  .flight-heading { padding-top: 26px !important; }
+}
+@media(prefers-reduced-motion: reduce) {
+  .client-logo-track, .intro-marquee-track { animation: none !important; }
+  .hanging-tag-inner { transition: none; }
+  .scroll-plane-anchor { top: 42px !important; left: 110px !important; opacity: 1 !important; transform: none !important; }
+}
+
+.hero-static-logo { display: block; width: 100%; max-width: 1120px; height: auto; object-fit: contain; object-position: left center; margin-top: 1.5in; }
+@media (max-width: 700px) { .hero-static-logo { width: 100%; max-width: 100%; margin-top: 1.5in; } }
+
+
+/* Poster popup: image only, widened so small text renders larger */
+.project-modal.is-poster{padding:1.5vh 1vw}
+.project-modal.is-poster .modal-panel{max-width:1900px;padding:0;min-height:0;border:0}
+.project-modal.is-poster #modal-kicker,.project-modal.is-poster .modal-title,.project-modal.is-poster .modal-body,.project-modal.is-poster .modal-actions{display:none}
+.project-modal.is-poster .modal-close{margin:6px 6px 0 0}
+
+/* Hover animation overlays (smoke / bells) */
+.visual-project img.smoke-overlay {
+  position: absolute;
+  left: 57.16%;   /* default = Parali smoke box */
+  top: 16.31%;
+  width: 13.42%;
+  height: auto;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+.visual-project img.smoke-overlay.is-on { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .visual-project img.smoke-overlay { display: none; }
+}
+</style>
+</head>
+
+<body>
+<header class="wrap nav">
+  <a class="logo" href="#top" aria-label="Dharvi Prajapati home"><img src="assets/logo.webp" alt="Dharvi Prajapati signature logo"></a>
+  <nav class="navlinks"><a href="#work">Works</a><a href="#approach">Approach</a><a href="#about">About</a><a href="Dharvi-Prajapati-Resume.pdf" download="Dharvi-Prajapati-Resume.pdf">Resume</a></nav>
+</header>
+
+<main id="top">
+  <!-- Hero Section -->
+  <section class="wrap hero">
+    <div class="portrait-stage composition-stage">
+      <img class="hero-composition" src="assets/hero-composition.webp" alt="Portrait composition of Dharvi in a circular yellow frame with layered paper cards"/>
+      <span class="years-editable">Interested in the <em>invisible layers</em> shaping everyday life.</span>
+      <span class="composition-hi" aria-hidden="true">Hi,</span>
+      <img class="hanging-thread-reference" src="assets/hanging-thread-reference.png" alt="" aria-hidden="true" />
+      <div class="hanging-tag-flip" aria-label="Education hanging tag">
+        <span class="hanging-tag-inner">
+          <span class="hanging-tag-face hanging-tag-front"></span>
+          <span class="hanging-tag-face hanging-tag-back" aria-hidden="true"></span>
+        </span>
+      </div>
+    </div>
+    <div class="hero-copy">
+      <div class="eyebrow">Designer · Researcher · Observer</div>
+      <h1>I’m Dharvi<br/><span class="underline">Prajapati.</span></h1>
+      <p class="intro">I'm a Strategic designer translating insights on <span class="intro-marquee" aria-label="people, space, service, systems, behaviour, experience, process"><span class="intro-marquee-track"><span class="intro-marquee-set"><span>people</span><span>space</span><span>service</span><span>systems</span><span>behaviour</span><span>experience</span><span>process</span></span><span class="intro-marquee-set" aria-hidden="true"><span>people</span><span>space</span><span>service</span><span>systems</span><span>behaviour</span><span>experience</span><span>process</span></span></span></span> into actionable, outcome driven design solutions</p>
+      <img class="hero-static-logo" src="assets/hero-static-logo.png" alt="Client logos: Shades of India, Aditya Birla, Fabindia, Window Passions, Mo Home, F&F, and Pala Decor" />
+
+    </div>
+  </section>
+
+  <!-- Approach Section with Off-Canvas Entrance & Clean Landing -->
+  <section aria-labelledby="approach-title" class="wrap flight-section" id="approach">
+    <div class="flight-scroll-stage" aria-hidden="true">
+      <svg class="flight-scroll-svg" viewBox="0 0 1200 360" preserveAspectRatio="none">
+        <!-- Exact smooth sketch path: begins completely off-canvas (X:1240), swoops under logos, crests, and parks gently above text (Y:42) -->
+        <path id="scroll-plane-path" 
+              d="M 1240,-10 
+                 C 1160,35 1060,115 970,165 
+                 C 890,205 845,200 800,165 
+                 C 745,120 705,100 660,105 
+                 C 590,112 510,185 410,180 
+                 C 320,175 220,95 110,42" 
+              fill="none" 
+              stroke="none"/>
+      </svg>
+      <div class="scroll-plane-anchor" id="scroll-plane">
+        <img src="assets/scroll-plane-anchor.png" alt="" class="scroll-plane-img" />
+      </div>
+    </div>
+
+    <div class="flight-heading">
+      <div><h2 id="approach-title">I observe.<br/>I make sense.<br/>I strategise.</h2></div>
+
+    </div>
+
+    <div class="flight-map diagram-image-wrap">
+      <img class="observe-process-diagram" src="assets/observe-process-diagram.webp" alt="Design process diagram: Observe, Synthesise and Strategise, with seven research and validation steps." />
+    </div>
+  </section>
+
+  <!-- Work Section -->
+  <section class="wrap section" id="work">
+    <div class="section-head"><div><h2>Ideas in motion.</h2></div></div>
+    <div class="visual-project-grid" aria-label="Selected project">
+      <a class="visual-project parali-project" href="#project-parali" data-project="parali" aria-label="Open The Parali Plan project" data-smoke="assets/visual-project-parali-project.webp">
+        <img src="assets/media.webp" alt="The Parali Plan — Field Change project ticket"/>
+      
+  <img class="smoke-overlay" alt="" aria-hidden="true"/>
+</a>
+      <a class="visual-project parali-project" href="#project-spaces" data-project="spaces" aria-label="Open Spaces of Intent project" data-smoke="assets/visual-project-parali-project-2.webp">
+        <img src="assets/media-2.webp" alt="Spaces of Intent — mapping deviances in a Hindu temple project ticket"/>
+      
+  <img class="smoke-overlay" style="left:63.03%;top:6.82%;width:7.5%" alt="" aria-hidden="true"/>
+</a>
+<a class="visual-project parali-project" href="#project-eventease" data-project="eventease" aria-label="Open EventEase project" data-smoke="assets/visual-project-parali-project-2.webp">
+        <img src="assets/media-3.webp" alt="EventEase project ticket"/>
+      
+  <img class="smoke-overlay" style="left:63.03%;top:6.82%;width:7.5%" alt="" aria-hidden="true"/>
+</a>
+<a class="visual-project parali-project" href="#project-adventuretourism" data-project="adventuretourism" aria-label="Open Adventure Tourism project" data-smoke="assets/visual-project-parali-project-2.webp">
+        <img src="assets/media-4.webp" alt="Adventure Tourism project ticket"/>
+      
+  <img class="smoke-overlay" style="left:63.03%;top:6.82%;width:7.5%" alt="" aria-hidden="true"/>
+</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="wrap section about-contact" id="about">
+    <div class="about">
+    <div>
+      <h2>Curious about<br/>what makes us<br/><span style="background:var(--ochre);padding:0 5px">do what we do.</span></h2>
+    </div>
+    <div>
+      <p class="about-copy">I’m interested in the <em>invisible layers</em> shaping everyday experiences — behaviour, rituals, relationships, environments and systems.</p>
+      <p class="about-details">My approach begins with observation and listening. I use research to make sense of complexity, identify opportunities and explore how design can shift an experience for the better. I’m currently pursuing my master’s at the National Institute of Design, Gandhinagar.</p>
+      <p class="about-lenses">Ethnography · Synthesis · Systems thinking · Prototyping · Spatial experiences</p>
+    </div>
+  </div>
+
+  <!-- Contact / Footer Section -->
+  <div class="footer" id="contact">
+    <h2>Let’s make<br/><span class="footer-hl">meaningful things.</span></h2>
+    <div class="contact-links" aria-label="Contact and social links">
+      <a class="pill" href="https://www.linkedin.com/in/dharvi-prajapati/" target="_blank" rel="noopener noreferrer"><svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10.5"/><circle cx="10" cy="8.6" r="0.9" fill="currentColor" stroke="none"/><path d="M10 16v-5.2M13 16v-5.2M13 13c0-1.4 1-2.3 2.2-2.3S17 11.6 17 13v3"/></svg><span>LinkedIn</span></a>
+      <a class="pill" href="https://www.behance.net/dharviprajapati" target="_blank" rel="noopener noreferrer"><svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10.5"/><text x="12" y="15.6" text-anchor="middle" font-family="Lato, sans-serif" font-size="9.4" font-weight="700" fill="currentColor" stroke="none">Bē</text></svg><span>Behance</span></a>
+      <a class="pill" href="mailto:dharviprajapati1998@gmail.com"><svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10.5"/><rect x="6.5" y="8" width="11" height="8" rx="1"/><path d="M6.8 8.4 12 12.2l5.2-3.8"/></svg><span>Email</span></a>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Dharvi Prajapati</span>
+      <span>Made with curiosity &amp; intention</span>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </div>
+  </section>
+</main>
+
+<!-- Project Modal -->
+<div class="project-modal" id="project-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-panel">
+    <button class="modal-close" id="modal-close" aria-label="Close project">×</button>
+    <div class="eyebrow" id="modal-kicker">Selected project</div>
+    <h2 class="modal-title" id="modal-title">Project title</h2>
+    <div class="modal-body" id="modal-body"></div>
+    <div id="modal-visual"></div>
+    <div class="modal-actions" id="modal-actions"></div>
+  </div>
+</div>
+
+<div class="cursor-dot" id="cursor-dot" aria-hidden="true"><svg viewBox="-11 -11 22 22" aria-hidden="true" focusable="false"><path d="M0-8.5V8.5M-7.36-4.25L7.36 4.25M-7.36 4.25L7.36-4.25" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/></svg></div>
+
+<script>
+// Read Progress & Tag Flip
+window.addEventListener('scroll', () => {
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  document.documentElement.style.setProperty('--read-progress', `${max > 0 ? (window.scrollY / max) * 100 : 0}%`);
+}, { passive: true });
+
+document.querySelectorAll('.hanging-tag-flip').forEach(card => {
+  card.addEventListener('click', () => card.classList.toggle('is-flipped'));
+});
+
+// Project Modals
+(() => {
+  const projects = {
+    temples: {
+      kicker: '01 / Design research · Behaviour change',
+      title: 'Human Behaviour & Strategies | Temples',
+      body: 'How might we activate non-engaged spaces in a temple to encourage meaningful visitor engagement and enhance the overall temple experience? Over five weeks, the team visited 12 Hindu temples around Gandhinagar and Ahmedabad and recorded 186 behaviours through slow ethnography, observation logs, photo documentation and spatial behaviour mapping.',
+      image: 'assets/project-temples.webp',
+      pdf: null
+    },
+    offspace: {
+      kicker: '02 / Service design · Wellbeing',
+      title: 'Offspace — a moment to reset',
+      body: 'A service-design exploration into the need for a personal space where design students can pause, recharge and regain physical and mental energy after prolonged studio hours.',
+      image: null,
+      pdf: null
+    },
+    'civil-hospital': {
+      kicker: '03 / Service design · Healthcare',
+      title: 'Seeing Care Better — Civil Hospital Ahmedabad',
+      body: 'A design-research project focused on observing the patient journey and identifying opportunities to reduce time per patient and improve the overall care experience across the hospital building.',
+      image: 'assets/project-civil-hospital.webp',
+      pdf: null
+    },
+    spaces: {
+      kicker: '',
+      title: '',
+      body: '',
+      image: null,
+      pdf: null,
+      html: "<style>.pp{position:relative;width:100%;background:#fff}.pp-tile{display:block;width:100%;height:auto}.pp-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:normal}</style><div class=\"pp\"><img class=\"pp-tile\" src=\"assets/project-spaces.webp\" alt=\"\"><img class=\"pp-tile\" src=\"assets/project-spaces-2.webp\" alt=\"\"><img class=\"pp-tile\" src=\"assets/project-spaces-3.webp\" alt=\"\"><img class=\"pp-tile\" src=\"assets/project-spaces-4.webp\" alt=\"\"><div class=\"pp-sr\">Shifting Focus<br>Mapping roots of behavioural deviance in a hindu religious temple to design framework for<br>non-coercive behaviour change<br>12<br>Temples scanned around Ahmedabad and Gandhinagar to understand<br>the deviancies in people behavior in its premises<br>186+<br>Behaviours observed, during different hours of the day<br>Defining purpose of a mandir : Secondary Research : Temple Behaviour mapping<br>Primary Functions<br>Knowledge Transfer<br>Community Building<br>Healing &amp; Mental Wellness<br>Guiding People Towards Good Morals<br>Preservation of Art, Culture &amp; History<br>Establishing Religious Identity<br>Core Function<br>Pilgrimage<br>Trade &amp; Economic Activity<br>Connecting with the Divine<br>Power<br>Extended Functions<br>Political Agenda<br>Tourism<br>Key Stakeholders Shelter to the Needy<br>Primary Stakeholders<br> Secondary Stakeholders<br> Tertiary Stakeholders<br>Devotees &amp; Visitors<br> Vendors<br> Beggars<br>Pujari Security &amp; Maintaince Staff Stray Animals<br>Our observation : Primary Research methodology, Planning primary research plan<br>We visited 12 Hindu religious temples around Gandhinagar &amp; Ahmedabad to understand how various stakeholders behave inside the mandir premises, their roles and how do they interact<br>with the space through slow ethnography. After an initial observation spanning a week, we recorded 186 behaviours exhibited inside the space using observation logs, photo documentation<br>and spatial behaviour mapping. We categorize behaviors to transform a chaotic stream of human actions into structured data patterns.<br>Spiritual Social &amp; Culture Spatial Transactional Sensory<br>Spiritual Immersion Social Interaction Space Utilization Followership Hygiene<br>Ritual Routines Social Norms Movement patterns Offerings Distractions<br>Therapeutic Heirarchy Gathering Zones Vendor Interactions Sensory triggers<br>Vow Fulfillment Cultural Influence Profane boundaries Educational modes Crowd feel<br>Meditation &amp; Chanting Volunteering Desire paths Acoustics<br>Enforcements Surveillance &amp; Monitoring Tactile Interactions<br>Signages<br>Safety &amp; Risks<br>Recreational<br>Spatial Mapping : Panchdev Mandir, Gandhinagar<br>Spatial mapping was used to document behaviours within the mandir premises by recording the type of activity, its location, and the duration of stay. This helped identify how different spatial<br>conditions influence user behaviour, revealing where people pause, interact, or simply pass through, and highlighting patterns of engagement within the space.<br>These insights help uncover spatial opportunities where design interventions can be strategically introduced to enhance user experience and activate underutilized areas while respecting the<br>cultural context of the mandir.<br>48+<br>Observed behaviours at Panchdev Mandir, Gandhinagar, revealed variations in visitor activities and<br>crowd patterns across different times of the day, with distinct differences between weekdays and<br>weekends, alongside recurring groups that gathered daily.<br>Behaviours were systematically documented using time-stamped observations, recording the gender<br>of participants, duration and frequency of engagement, intervals between interactions, and whether<br>activities occurred individually or as part of a group<br>Engaged Non Engaged<br>Enhance Behaviour<br> Eliminate Behaviour<br> Antecedent Consequence<br>1 Voluntary visitor participation in temple upkeep (helping 1 Elevated voice levels and loud conversations within the Visitors gather in shaded Others are disturbed, but<br>with crowd control, assisting other visitors in way- courtyards to rest and talk. nobody corrects it, so it<br>inner and outer mandir premises<br>No cue for quiet continues.<br>finding etc.)<br>2 Dim, secluded spot. No Privacy, closeness and the<br>2 Visitors sponsoring Annadaan/prasad, bringing food to Showing PDA (public display of affection) holding hands,<br>guardian. No safe place thrill of the taboo. Sacred<br>distribute, offering food to other visitors or the needy in hugging or engaging in intimate behaviour elsewhere. atmosphere suffers.<br>the temple premises<br>3 3 Mobile phone use inside temple premises that disrupts Waiting in a low-activity Entertainment or relief from<br>Encouraging devotees to engage in devotional &quot;bhajan<br>the sanctity (taking calls, letting phone ring, speaking zone. Phone in hand, calls waiting. Sound and<br>and kirtan&quot; to deepen spiritual immersion and notifications arrive. attention disrupt others.<br>loudly, scrolling, and watching videos)<br>4 Need for clean drinking Need is met, which<br>Filling their water bottles or cans for commercial food<br>water The temple offers reinforces the visit.<br>cart operations and personal use<br>an accessible source.<br>5 Pending work after office Calm and focus. The space<br>People working on their office laptops to complete<br>hours. A quiet, shaded, becomes a workplace ease<br>pending work tasks even after office hours<br>seated spot. of access.<br>6 Arrival by vehicle. Need to Smooth entry. Attention<br>Occupied with parking related activities, focusing on<br>find access and a free stays on logistics at the<br>vehicle access and parking<br>parking spot. threshold<br>Intimate PDA<br> Performative PDA Emotional Disruption<br>Hugging, kissing, hand-holding in an Filming oneself or others for social media, Laughing loudly, Overt emotional<br>affectionate (non-devotional) sense, posing in front of deities, seeking attention performances that disturb the sacred<br>physical closeness between partners. rather than devotion atmosphere.<br>Holding Hands Leaning over Kissing Putting legs Hugging for long Holding waist Leaning towards<br>each other over each other period of time each other<br>Drivers<br>Temple seen as a casual public space, not Low surveillance, no authority figures<br>a sacred one<br>Dim, shaded, secluded privacy pockets<br>Taboo creates a thrill<br>Low footfall, other couples nearby<br>Media and dating culture shape a modern<br>identity<br>No safe alternative places for couples<br>Motivational Reactive<br>Executive Habits<br>Choosing the temple as a free, acceptable Returning to the same quiet spot and time<br>meeting place<br>Learned from peers, this is where couples go<br>Weighing risk of being seen against<br>Closeness treated as normal in public<br>closeness<br>Enablers<br>Low lit space Secluded space Low footfall space Far away space Low surveillance<br>Less observed areas,<br> Unmaintained landscaping, The space is not on a main Visual cues or signage often Absence of CCTV cameras,<br>Shadows becomes more high hedges, or dense trees, walking route, Spaces decrease, Spots located at lighting, or signage<br>prominent, L-shaped Often found behind without tasks, rituals, or the boundaries, Fewer indicating surveillance, Even<br>corridors or sharp turns buildings services often remain people pass through the if cameras exist, they may<br>where you cannot see unused, If only a few people space regularly, Multiple be poorly placed or not<br>what is ahead, Improperly are present, visitors may ways to enter or exit obvious, Security staff,<br>placed lights that &quot;blind&quot; feel too visible or awkward, without passing through the guards, or responsible<br>cameras The area may not have a premises<br> figures are rarely present,<br>or people, Insufficient or clear reason to visit Areas where coverage is<br>broken lighting, Peripheral obstructed, or poorly<br>vision becomes weaker<br> maintained.<br>1 2 3 4 5<br>Makes it impossible to Creates a private &amp; False sense of social Distance provides a Sense of temporary<br>identify faces or intimate space<br> norms become &quot;buffer zone&quot;<br> ownership of the<br>actions<br> relaxed<br> space<br>Now have a neutral excuse to use the space Snack kiosks, water stations, charging<br>points, study friendly tables<br>More people for the same purpose<br>More frequent movie screenings<br>It becomes a new space to explore, you<br>can stargaze while you watch movie More social hooks beyond the movie<br>It feels awkward to enter or leave the space<br>Create better &quot;sound stage&quot; effect<br>Being assumed to be meeting<br>someone romantically<br>Fear of administrative trouble<br>Designing for Behaviour Change : The three-stage progression Framework<br>2 3<br>Presence 1 Volunteering<br>Drawing people into the space Community ownership of the space<br>Community as outcome, not means : The framework<br>creates conditions in which community ownership<br>emerges naturally, it is not engineered or recruited.<br>Engagement<br>Giving people a reason to stay<br>Activation over surveillance : Crowd programming creates<br>social density that surveils itself.<br>Additive, not subtractive : The framework works by addition<br>rather than by erasure or restriction.<br>Displacement over prohibition : The framework removes the<br>conditions with meaningful alternatives.<br>Enrichment over imposition : Every intervention adds cultural<br>or social value. It creates enrichment, not constrains.</div></div>"
+    },
+    eventease: {
+      kicker: '',
+      title: '',
+      body: '',
+      image: null,
+      pdf: null,
+      html: "<style>.pp{position:relative;width:100%;background:#fff}.pp-tile{display:block;width:100%;height:auto}.pp-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:normal}</style><div class=\"pp\"><img class=\"pp-tile\" src=\"assets/eventease-poster.svg\" alt=\"\"><div class=\"pp-sr\">Celebrations, without<br>the local network ?<br>Understanding the financial profile, motivations and challenges of our<br>target users to design relevant and accessible solutions.<br>Overview<br>84.9% 6.82% \u20b95\u201315L<br>of the sized events market is weddings of industry growth attention goes to household income of India\u2019s largest<br>&amp; allied personal events income group<br>3 of 3 66.4% 17<br>competitors flagged on cost; 2 of 3 on pain points \u2014 7 land on the event day<br>prefer small gatherings at home<br>fake reviews itself<br>13 12 \u2192 4 \u20b924,480<br>manual steps for one griha pravesh, doors off the home screen, collapsed final bill against a \u20b925,000 budget \u2014<br>across 5 parties into tabs fee &amp; GST included<br>01<br>Problem Framing<br>\u201cWhy is a small celebration so hard to organise in a new city?\u201d<br>METHODS HANDS ON TO NEXT CHAPTER<br>Desk research \u00b7 team synthesis \u00b7 scoping matrix A scoped problem and one research question<br>for every phase<br>Why small-scale event planning, and why now ?<br>Small events are overlooked Reliability is hard to find Hosts are overwhelmed The tier-1 city dilemma Home, away from home<br>Small-scale events get lost in an Trustworthy services aren\u2019t easily Planning becomes hectic: many New residents are disconnected Urban dwellers want festivals with<br>industry built around weddings and accessible, leaving hosts unsure of vendors, many calls, many decisions. from the local services their families the same fervour and warmth of<br>corporate scale. their choices. relied on. their traditions.<br>\u2192 DESIGN IMPLICATION<br>\u2192 DESIGN IMPLICATION \u2192 DESIGN IMPLICATION Compose a package; don\u2019t hand over a \u2192 DESIGN IMPLICATION \u2192 DESIGN IMPLICATION<br>Design for 10\u201350 guests at home, not 500 Make verification visible on every directory. Platform trust must stand in for the Customs (saatvik, vastu, havan) are<br>in a banquet. vendor, every time. friend\u2019s reference. first-class filters.<br>Macro view of the event industry<br>Sending Analysis<br>What interview data says ?<br>Understanding the financial profile, motivations and challenges of our<br>target users to design relevant and accessible solutions.<br>DEMAND SIGNALS \u00b7 1 LIT DIYA = 10% OF RESPONDENTS INTEREST IN THE APP \u00b7 BY GENDER<br>How many in ten would light a lamp for it<br>53.8%<br>Women interested<br>72.4%<br>Online options for<br>46.2%<br>birthday parties<br>Men interested<br>68.1% 1 marigold \u2248 1%<br>Help with catering needs red = women \u00b7 yellow = men<br>63%<br>66.4%<br>Prefer small gatherings at AVERAGE BUDGET PER EVENT<br>home Most plan between \u20b910k and \u20b950k<br>of respondents were aged 25\u201334<br>Survey \u00b7 age<br>53.1%<br>Interested in an event<br>\u20b910\u201350k planning app \u20b90k \u20b910k \u20b925k \u20b950k \u20b975k \u20b9100k<br>\u2192 Anchors the in app budget slider: \u20b913k lean \u00b7 \u20b925k tailored \u00b7 \u20b935k<br>average budget per event<br>generous.<br>Survey \u00b7 budget ratio 10% said yes part of 10% did not<br>Paint points ?<br>Understanding the user and where does the pain lies ?<br>Understanding the user and where does the pain lies ?<br>Task Flow Mapping<br>Information Archetecture<br>Eventease : Low Fidelity framework<br>e e<br>Eventease : High Fidelity framework<br>Eventease : Low Fidelity framework</div></div>"
+    },
+    adventuretourism: {
+      kicker: '',
+      title: '',
+      body: '',
+      image: null,
+      pdf: null,
+      html: "<style>.pp{position:relative;width:100%;background:#fff}.pp-tile{display:block;width:100%;height:auto}.pp-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:normal}</style><div class=\"pp\"><img class=\"pp-tile\" src=\"assets/adventure-tourism-poster.svg\" alt=\"\"><div class=\"pp-sr\">$16.7B<br> $86B<br> 500K<br>Market size (2024) Projected by 2033 People employed<br>Adventure tourism is travel built around a physical activity, a natural environment and a perceived element<br>of risk, delivered by a mix of operators, guides and hospitality. The UN Tourism / ATTA framing uses three<br>pillars: physical activity, nature and cultural immersion.<br>Emergence ?<br>The concept of adventure sports emerged from a blend of ancient survival techniques, indigenous rituals, and a 20th-century cultural shift towards risk, self-<br>realization, and opposition to modern, structured lifestyles. While many activities originated from traditional practices, the formalized &quot;adventure sports&quot; industry<br>grew significantly from the 1970s onward.<br>Categorising Adventure Activities ?<br>Air Water Mountain &amp; Trail Snow &amp; Ice Desert &amp; Wildlife Caves &amp; Canyons<br>Paragliding Hot-air ballooning White-water rafting Kayaking Trekking &amp; camping Rock climbing Skiing Snowboarding Camel safaris Sandboarding Caving River canyoning<br>Zip-lining Flying fox Scuba diving Snorkelling ATV &amp; off-roading Horse riding Ice skating Dune bashing Wildlife safaris<br>Bungee jumping Giant swing Jet skiing Parasailing Surfing Camping Raw and offbeat; little infrastructure or<br>Remote terrain, so guide competence,<br> Seasonal, high-altitude and equipment-<br> organised safety support.<br>navigation and emergency access<br> heavy. Culture-rich and gentler, with a strong<br>High thrill, depends on weather and pilot<br> Most accessible and affordable; safety<br> Meghalaya<br>matter most. local-community role.<br>skill. depends on current and equipment.<br>J&amp;K \u00b7 Himachal Pradesh<br>Himachal Pradesh \u00b7 J&amp;K \u00b7 Karnataka \u00b7<br> Rajasthan \u00b7 Western Ghats<br>Himachal Pradesh \u00b7 J&amp;K \u00b7 Rajasthan Goa \u00b7 Himachal Pradesh \u00b7 Western<br>Kerala \u00b7 Tamil Nadu<br>Ghats<br>Mapping Hotspots (Risk vs Popularity)<br>Seasonal heat mapping<br>Trekking<br>Paraglyding<br>Rafting<br>Why, Who go: motivations, criteria, behaviours<br>30% 25% 20% 15% 10%<br>Travel Exploration &amp; Novelty Stress Relief &amp; Relaxation Thrill &amp; Excitement Social Bonding Skill development<br>Cultural exchange Escapism Confrontation of feer Creating memories Learning new skill<br>Long weekends Being close to nature Bucket &amp; Checklist Peer group influence<br>Understanding current state of the Adventure Industry ?<br>No accounted accident data base<br>Information<br>asymmetry<br>Helpline numbers not operational/working<br>No booking platform/operator identification system<br>Environmental/Location Knowledge/Itenary<br>Locals Dillusion<br>No cultural sensitivity<br>Regional people/tribe<br>Inter-agency silos, DGCA, tourism, forest<br>exclusion from ownership<br>&amp; state government doesn&#x27;t allign<br>Space/territory invasion<br>Unfair distribution of local<br> Complex &amp; slow procedure to receive permits<br>economic benfits Challenges Non regulated Government guidelines<br>Locals<br>No financial assistance<br>Habitants<br>Shortage of training centres<br>Locals Dominace<br>Local vendor tie ups Over crowding<br>Language Barrier in<br>communicating with tourists Tourists<br>Frauds &amp; Harrasment Lack of self-awareness among tourists<br>Surge charges, Unfair price<br> Insurance Void<br>demand Gender Dynamics Bias<br>Experience mismatch<br>Remote area<br>Safety<br>Medical Facility Absence<br>Lack of infrastructure<br>Medical centres and hospitals unavailable<br>Unhygenic/make shift washrooms<br>in proximity<br>Unavailability of food<br>Shortage of hotels &amp; homestays,<br> Seasonal and<br> Untrained instructors<br>during peek season<br>weather conditions Operating illegally<br>Improper transportation system Incompatible Equipment<br>Easy access to liscense<br>Climate resilience gap, rising global<br>Lack of medical facility warming, climatic hazards, natural<br> Usage of secondhand/outdates tools<br> Lack of coordination and communication<br>and equipmentss<br>calamities Demand leads to, local shop vendors turn<br>No safety assessment and compliance<br>into instructors due to lack of man power<br>Lack of navigation<br>Inconsistent Safety Demonstrations<br>No / Low network zones<br>No risk assessment / emergency planning<br>Stakeholders Involved<br>Delivery<br>Operators, guides,<br>pilots, raft guides,<br>porters, camp staff,<br>equipment vendors.<br>Enablers Community Governance<br>Homestays and hotels, Tourism &amp; Forest Local residents,<br>taxi unions, local department, district panchayats,<br>restaurants, OTAs and administration, police, environmental<br>booking apps, payment SDRF/NDRF, ATOAI, groups, media and<br>providers. Adventure Sports influencers shaping<br>associations demand.<br>Problem Statement/ Hypothesis/ Scope<br>How might India make adventure tourism more discoverable, trustworthy and accessible<br>without diluting the sense of adventure?<br>EXPLORE UNDERSTAND MAP THE SYSTEM<br>Motivations Decision barriers Trust &amp; delivery<br>What draws people in: thrill, novelty, How price, travel logistics, information gaps, How operators, guides, platforms, local<br>nature, self-growth, social bonding, perceived risk, skill confidence and social communities, infrastructure and safety<br>escape and cultural connection. influence shape choices. practices shape the experience.<br>Understanding from the users ??<br>Shared a questiionnaire with tourists, received 68 responses to understand<br>User archetypes<br>Where does this trust build, bend &amp; break ?<br>Expert Reviews<br>Understanding what enables people to choose, trust and experience adventure.<br>Making some data connect ? Triangulation<br>Coding the data points<br>1<br>Trust Is Relational, Never Evidental<br>M2,M3, A8, D5, M4, K24, K10, K28, A3, D3, I3, I6, F1, F2<br>2<br>The Accountability Vaccum<br>K30, K31, K3, K15, K25, I2, I5, F1, E2<br>3<br>Incident Suppresion Loop<br>N8, O2, G4, K23, M3, M4, B4, F2, K20, K17<br>4<br>Competency &amp; Standards<br>A3, A5, A8, D2, D5, F3, B5<br>5<br>Commercial Interests Dominate Safety Systems<br>C1, C2, K1, K22, O10, L1, H2,H3,K13<br>6<br>Medical Information Blackout<br>J1, J3, G1, G4, G6, K9<br>7<br>Normalisation of Deviance<br>K6, K11, K17, K4, B2<br>8<br>Infrastructure gaps amplify risk into failure<br>L1, L3, L4, L6, L7, N3, N8<br>How do we see the gap ?<br>How do gaps between communicated safety and actual on ground<br>practices influence tourist trust, perception of risk, and decision<br>making in adventure tourism?</div></div>"
+    },
+    parali: {
+      kicker: '04 / Community intervention · Sustainability',
+      title: 'The Parali Plan',
+      body: 'A community-intervention concept exploring how design can help transform agricultural residue into more sustainable opportunities and reduce crop burning.',
+      image: 'assets/media.webp',
+      pdf: null
+    }
+  };
+
+  const modal = document.getElementById('project-modal');
+  const title = document.getElementById('modal-title');
+  const kicker = document.getElementById('modal-kicker');
+  const body = document.getElementById('modal-body');
+  const visual = document.getElementById('modal-visual');
+  const actions = document.getElementById('modal-actions');
+
+  document.querySelectorAll('.visual-project[data-project]').forEach(card => {
+    card.addEventListener('click', e => {
+      e.preventDefault();
+      const d = projects[card.dataset.project];
+      if (!d) return;
+      kicker.textContent = d.kicker;
+      title.textContent = d.title;
+      body.textContent = d.html ? '' : d.body;
+      visual.innerHTML = d.html ? d.html : d.image ? `<img class="modal-board" src="${d.image}" alt="${d.title}">` : '';
+      actions.innerHTML = d.html ? '' : d.pdf ? `<a class="pill dark" href="${d.pdf}" target="_blank" rel="noreferrer">Open full project PDF ↗</a>` : '<span class="eyebrow">Case study preview</span>';
+      modal.classList.toggle('is-poster', !!d.html);
+      modal.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+      document.getElementById('modal-close').focus();
+    });
+  });
+
+  function closeModal() {
+    modal.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+})();
+
+// Cursor Dot
+(() => {
+  const dot = document.getElementById('cursor-dot');
+  if (!dot || !matchMedia('(pointer:fine)').matches) return;
+
+  const INTERACTIVE = 'a, button, [role="button"], input, select, textarea, label, summary, .visual-project, .hanging-tag-flip, .modal-close, .pill';
+  let tx = 0, ty = 0, frame = 0;
+
+  const place = () => {
+    frame = 0;
+    dot.style.transform = `translate3d(${tx - 6}px, ${ty - 6}px, 0)`;
+  };
+  const show = () => dot.classList.add('is-visible');
+  const hide = () => dot.classList.remove('is-visible', 'is-click', 'is-hover');
+  const press = on => dot.classList.toggle('is-click', on);
+
+  // The dot sits exactly on the pointer (no easing), so it never trails the cursor.
+  document.addEventListener('pointermove', e => {
+    if (e.pointerType === 'touch') return;
+    tx = e.clientX; ty = e.clientY;
+    if (!frame) frame = requestAnimationFrame(place);
+    show();
+    // Alternating tone across the page (the original yellow / charcoal pattern).
+    dot.style.setProperty('--dot-tone', (Math.floor((tx + ty) / 35) % 2 === 0) ? '#e8b900' : '#292929');
+  }, { passive: true });
+
+  // Hover is handled by delegation, so it also works for elements added later.
+  document.addEventListener('pointerover', e => {
+    if (e.pointerType === 'touch') return;
+    const hit = e.target instanceof Element ? e.target.closest(INTERACTIVE) : null;
+    dot.classList.toggle('is-hover', !!hit);
+  }, { passive: true });
+
+  document.addEventListener('pointerdown', e => { if (e.pointerType !== 'touch') press(true); }, { passive: true });
+  document.addEventListener('pointerup', () => press(false), { passive: true });
+  document.addEventListener('pointercancel', () => press(false), { passive: true });
+  window.addEventListener('blur', () => press(false));
+  // Pointer left the browser window: hide the dot until it comes back.
+  document.documentElement.addEventListener('pointerleave', hide);
+  document.documentElement.addEventListener('pointerenter', e => { if (e.pointerType !== 'touch' && tx + ty > 0) show(); });
+})();
+
+// =========================================================================
+// ULTRA-SMOOTH MONODIRECTIONAL FLIGHT ENGINE (OFF-SCREEN ENTRANCE TO LANDING)
+// =========================================================================
+(() => {
+  const section = document.getElementById('approach');
+  const path = document.getElementById('scroll-plane-path');
+  const plane = document.getElementById('scroll-plane');
+  const stage = document.querySelector('.flight-scroll-stage');
+
+  if (!section || !path || !plane || !stage) return;
+
+  const pathLength = path.getTotalLength();
+  let maxProgress = 0;       // Strictly forward: scrolling up never pulls the plane backward
+  let targetProgress = 0;
+  let currentProgress = 0;
+  const lerpSpeed = 0.048;   // Smooth natural fluid damping
+  let smoothedAngle = 186;   // Native alignment for plane.png
+
+  function calculateTarget() {
+    const rect = section.getBoundingClientRect();
+    const windowH = window.innerHeight;
+    
+    // Flight triggers smoothly as the user finishes reading the hero section
+    const startY = windowH * 0.90;
+    const endY = windowH * 0.22;
+    const rawProgress = (startY - rect.top) / (startY - endY);
+    const clampedProgress = Math.max(0, Math.min(1, rawProgress));
+
+    // Monotonic progression rule
+    if (clampedProgress > maxProgress) {
+      maxProgress = clampedProgress;
+    }
+    targetProgress = maxProgress;
+  }
+
+  function renderPlane() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    currentProgress += (targetProgress - currentProgress) * lerpSpeed;
+    const currentDist = currentProgress * pathLength;
+
+    // Gracefully fade in as the plane glides from off-canvas into the viewport
+    if (currentProgress < 0.015) {
+      plane.style.opacity = '0';
+    } else {
+      const enterOpacity = Math.min(1, (currentProgress - 0.015) / 0.05);
+      plane.style.opacity = String(enterOpacity);
+    }
+
+    // Wide 15px symmetrical lookahead/behind to completely eliminate rotational flutter
+    const delta = 15;
+    const ptPrev = path.getPointAtLength(Math.max(0, currentDist - delta));
+    const ptNext = path.getPointAtLength(Math.min(pathLength, currentDist + delta));
+    const pt = path.getPointAtLength(currentDist);
+
+    const dx = ptNext.x - ptPrev.x;
+    const dy = ptNext.y - ptPrev.y;
+    const rad = Math.atan2(dy, dx);
+    const targetDeg = rad * (180 / Math.PI) + 186; // Calibrated for plane.png's west-facing tip
+
+    // Angular unwrapping & weighted spring filter for physical flight realism
+    let diff = (targetDeg - smoothedAngle) % 360;
+    if (diff < -180) diff += 360;
+    if (diff > 180) diff -= 360;
+    smoothedAngle += diff * 0.08;
+
+    // Aerodynamic banking into vertical swoop curves
+    const bank = Math.max(-16, Math.min(16, (dy / (Math.abs(dx) + 0.2)) * 22));
+
+    const pixelX = (pt.x / 1200) * stage.offsetWidth;
+    const pixelY = (pt.y / 360) * stage.offsetHeight;
+
+    plane.style.transform = `
+      translate3d(${pixelX}px, ${pixelY}px, 0)
+      translate(-20%, -35%)
+      rotate(${smoothedAngle}deg)
+      rotateX(${bank}deg)
+    `;
+
+    requestAnimationFrame(renderPlane);
+  }
+
+  window.addEventListener('scroll', calculateTarget, { passive: true });
+  window.addEventListener('resize', calculateTarget, { passive: true });
+  calculateTarget();
+  requestAnimationFrame(renderPlane);
+
+  // Manual replay button
+  const launchBtn = document.getElementById('launch-plane');
+  if (launchBtn) {
+    launchBtn.addEventListener('click', () => {
+      maxProgress = 0;
+      targetProgress = 0;
+      currentProgress = 0;
+      smoothedAngle = 186;
+      plane.style.opacity = '0';
+    });
+  }
+})();
+
+// Subtle hover loops (cards with data-smoke)
+(() => {
+  document.querySelectorAll('.visual-project[data-smoke]').forEach(card => {
+    const ov = card.querySelector('.smoke-overlay');
+    if (!ov) return;
+    let timer;
+    const start = () => { clearTimeout(timer); ov.src = card.dataset.smoke; ov.classList.add('is-on'); };
+    const stop  = () => { ov.classList.remove('is-on'); timer = setTimeout(() => ov.removeAttribute('src'), 700); };
+    card.addEventListener('pointerenter', start);
+    card.addEventListener('pointerleave', stop);
+    card.addEventListener('focus', start);
+    card.addEventListener('blur', stop);
+  });
+})();
+</script>
+</body>
+</html>
